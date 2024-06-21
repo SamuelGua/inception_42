@@ -7,7 +7,8 @@ COPY conf/50-server.cnf	/etc/mysql/mariadb.conf.d/50-server.cnf
 
 EXPOSE 3306
 
-COPY conf/init-db.sh .
-RUN chmod +x init-db.sh
+COPY conf/init-db.sh /init-db.sh
+RUN chmod +x /init-db.sh
 
-CMD ["bash", "-c", "service mysql start && bash init-db.sh && tail -f /dev/null"]
+# faire attention au & et au &&
+CMD ["bash", "-c", "mysqld_safe --datadir=/var/lib/mysql & sleep 5 && /init-db.sh && tail -f /dev/null"]

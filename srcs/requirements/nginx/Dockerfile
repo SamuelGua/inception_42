@@ -1,6 +1,7 @@
 FROM debian:bullseye
 
 RUN apt -y update && apt -y upgrade
+# effacer vim et curl si on peut faire les autres commande sans
 RUN apt -y install vim curl
 RUN apt -y install nginx
 RUN mkdir -p /etc/nginx/ssl
