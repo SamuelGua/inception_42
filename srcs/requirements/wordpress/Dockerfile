@@ -23,4 +23,4 @@ COPY conf/auto_config.sh /auto_config.sh
 
 RUN chmod +x /auto_config.sh
 
-# ENTRYPOINT ["/auto_config.sh" ]
+ENTRYPOINT ["/auto_config.sh" ]

@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#a effacer lors
-SQL_DATABASE=samuel
-SQL_USER=sam
-SQL_ROOT_PASSWORD=123456
-SQL_PASSWORD=123456
-
 print_green() {
     echo -e "\033[32m$1\033[0m"
 }

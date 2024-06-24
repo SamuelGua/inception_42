@@ -6,7 +6,6 @@ print_green() {
     echo -e "\033[31m$1\033[0m"
 }
 
-
 FILENAME="wp-config.php"
 print_green "1 Init config"
 if [ ! -f "$FILENAME" ]; then
@@ -32,21 +31,17 @@ else
 fi
 
 print_green "4 Set site"
-wp core install --allow-root --title="Le bokit du soir" \
+wp core install --allow-root --title=$SITE_TITLE \
 	--path='var/www/wordpress' \
-	--admin_user=scely \
-	--admin_password=cely \
+	--admin_user=$USER_1_NAME \
+	--admin_password=$USER_1_PASSWORD \
 	--skip-email \
 
 print_green "5 Set user"
-# Just for testing - to be removed in production
-wp user create --allow-root stayssy judor stayssy@domain.com --role="author" \
+wp user create --allow-root --role=$WP_ROLE \
 	--path='var/www/wordpress' \
-	--user_pass="123456789" \
-	--first_name="stayssy" \
-	--last_name="judor"
+	--user_pass=$WP_PASSWORD \
+	--first_name=$WP_FIRST_NAME \
+	--last_name=$WP_LAST_NAME
 
-
-print_green 5
-exit 0
 php-fpm7.4 -F
