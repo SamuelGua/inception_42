@@ -1,10 +1,6 @@
-version: '3.8'
-
 services:
   mariadb:
     container_name: mariadb
-    networks:
-      - inception
     build:
       context: requirements/mariadb
       dockerfile: Dockerfile
@@ -19,8 +15,6 @@ services:
     container_name: nginx
     volumes:
       - wordpress:/var/www/wordpress
-    networks:
-      - inception
     depends_on:
       - wordpress
     build:
@@ -36,8 +30,6 @@ services:
     env_file: .env
     volumes:
       - wordpress:/var/www/wordpress
-    networks:
-      - inception
     build: 
       context: requirements/wordpress
       dockerfile: Dockerfile
@@ -49,19 +41,15 @@ services:
 
 volumes:
   wordpress:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/Users/login/data/wordpress'
+    # driver: local
+    # driver_opts:
+    #   type: 'none'
+    #   o: 'bind'
+    #   device: '/Users/login/data/wordpress'
 
   mariadb:
-    driver: local
-    driver_opts:
-      type: 'none' 
-      o: 'bind'
-      device: '/Users/login/data/mariadb'
-
-networks:
-  inception:
-    driver: bridge
+    # driver: local
+    # driver_opts:
+    #   type: 'none' 
+    #   o: 'bind'
+    #   device: '/Users/login/data/mariadb'

@@ -25,7 +25,5 @@ mysqladmin -u root -p${SQL_ROOT_PASSWORD} shutdown
 
 print_green "4 : MariaDB has been stopped."
 
-print_green "everything it's ok or not"
-exit 1
 exec mysqld_safe --datadir=/var/lib/mysql
 
