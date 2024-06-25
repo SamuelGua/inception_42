@@ -8,8 +8,8 @@ RUN apt-get update -y && apt-get upgrade -y && \
 #Download wordpress and extract it
 RUN wget https://fr.wordpress.org/wordpress-6.5.4-fr_FR.tar.gz -P /var/www && \
 	cd /var/www && tar -xzf wordpress-6.5.4-fr_FR.tar.gz && rm wordpress-6.5.4-fr_FR.tar.gz && \
-	# chown -R root:root /var/www/wordpress
-	chown -R www-data:www-data /var/www/wordpress
+	chown -R root:root /var/www/wordpress
+	# chown -R www-data:www-data /var/www/wordpress
 
 #Copy conf
 COPY conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf

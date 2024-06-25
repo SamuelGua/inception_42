@@ -3,10 +3,10 @@
 sleep 10
 
 print_green() {
-    echo -e "\033[31m$1\033[0m"
+    echo -e "\033[32m$1\033[0m"
 }
 
-FILENAME="wp-config.php"
+FILENAME="var/www/wordpress/wp-config.php"
 print_green "1 Init config"
 if [ ! -f "$FILENAME" ]; then
 	echo "$FILENAME doesn't exist"
@@ -25,7 +25,7 @@ print_green "2 Check run/php"
 if [ ! -f "/run/php" ]; then
 	echo "/run/php doesn't exist"
 	mkdir "/run/php"
-	echo "/run/php was create"
+	echo "/run/php was created"
 else
 	echo "/run/php exist"
 fi
