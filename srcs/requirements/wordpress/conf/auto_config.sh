@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sleep 10
+sleep 20
 
 print_green() {
     echo -e "\033[32m$1\033[0m"
@@ -64,9 +64,10 @@ fi
 print_green "Vérification du répertoire run/php"
 if [ ! -d "/run/php" ]; then
     mkdir "/run/php"
-    chown -R www-data:www-data /run/php
 else
     echo "/run/php existe déjà"
 fi
+
+print_green "Its ok"
 
 php-fpm7.4 -F
