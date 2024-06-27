@@ -70,4 +70,4 @@ fi
 
 print_green "Its ok"
 
-php-fpm7.4 -F
+exec php-fpm7.4 -F
