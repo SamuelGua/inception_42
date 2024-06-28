@@ -10,9 +10,14 @@ print_red() {
     echo -e "\033[1;31mError: $1\033[0m"
 }
 
+count=0
 while ! mysqladmin ping -h mariadb --silent; do
+    if [ $count -ge 60 ]; then
+        break
+    fi
     print_green "Waiting for MariaDB to be ready..."
     sleep 2
+    ((count++))
 done
 
 # Chemin du modèle de configuration de WP-CLI

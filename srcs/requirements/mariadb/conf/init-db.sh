@@ -5,10 +5,14 @@ print_green() {
 }
 
 print_green "1 : Starting..."
-
+count=0
 while ! mysqladmin ping --silent; do
+    if [ $count -ge 60 ]; then
+        break
+    fi
     print_green "Waiting for MariaDB..."
     sleep 1
+    ((count++))
 done
 
 print_green "2 : MariaDB setup..."
