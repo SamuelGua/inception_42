@@ -1,0 +1,70 @@
+Docker est une plateforme open source qui automatise le déploiement d'applications dans des conteneurs logiciels. Il permet de regrouper une application et ses dépendances dans un conteneur afin qu'elle puisse s'exécuter de manière cohérente sur n'importe quel environnement.
+
+Voici les principaux concepts de Docker :
+
+### 1. Conteneur (Container)
+
+Un conteneur est une instance en cours d'exécution d'une image Docker. Il s'agit d'une unité légère et autonome qui inclut tout le nécessaire pour exécuter une application : code, runtime, bibliothèques système, etc. Les conteneurs sont isolés les uns des autres et de l'hôte, mais ils partagent le noyau du système d'exploitation, ce qui les rend plus efficaces que les machines virtuelles.
+
+### 2. Image
+
+Une image Docker est un modèle statique et immuable utilisé pour créer des conteneurs. Elle contient tout ce qu'il faut pour exécuter une application, y compris le code source, les dépendances, les outils, les bibliothèques et les fichiers de configuration. Les images sont construites à partir d'instructions écrites dans un fichier Dockerfile, qui décrit étape par étape comment assembler l'image.
+
+### 3. Volume
+
+Un volume dans Docker est un mécanisme de stockage persistant qui permet aux conteneurs de stocker et partager des données indépendamment de leur cycle de vie. Les volumes sont gérés par Docker et peuvent être montés dans un ou plusieurs conteneurs, ce qui facilite le partage de données entre les conteneurs et la persistance des données au-delà de la durée de vie des conteneurs.
+
+### Schéma simplifié de l'utilisation de Docker :
+
+1. **Développeur** : Écrit une application et crée un fichier Dockerfile.
+2. **Image** : Construit une image Docker à partir du Dockerfile.
+3. **Conteneur** : Lance des conteneurs à partir de cette image. Chaque conteneur est une instance de l'application.
+4. **Volume** : Utilise des volumes pour persister et partager les données entre les conteneurs.
+
+
+Docker simplifie le processus de développement, de test et de déploiement des applications en assurant que les environnements sont cohérents sur toutes les plateformes.
+
+<!-- ************************************************************************* -->
+
+Docker Compose est un outil de Docker qui permet de définir et de gérer des applications multi-conteneurs. Avec Docker Compose, vous pouvez utiliser un fichier YAML pour configurer les services de votre application, puis, avec une seule commande, créer et lancer tous les services à partir de cette configuration.
+
+### Principaux concepts de Docker Compose :
+
+1. **Service** :
+   Un service est une définition d'un conteneur dans le fichier de configuration de Docker Compose. Il spécifie l'image à utiliser, les commandes à exécuter, les ports à exposer, les volumes à monter, etc. Un service peut représenter une application web, une base de données, un cache, etc.
+
+2. **Déploiement multi-conteneurs** :
+   Docker Compose permet de déployer plusieurs conteneurs définis dans un fichier de configuration unique. Cela facilite la gestion des dépendances et des relations entre les différents services de l'application.
+
+3. **Fichier `docker-compose.yml`** :
+   C'est le fichier de configuration utilisé par Docker Compose pour définir les services, réseaux et volumes nécessaires à l'application. Ce fichier utilise la syntaxe YAML pour décrire les paramètres de chaque service.
+
+
+### Explications des sections :
+
+- **version** : Indique la version du format de fichier Docker Compose à utiliser.
+- **services** : Définition des services de l'application.
+  - **web** : Définition du service web.
+    - **image** : L'image Docker à utiliser pour le service web.
+    - **ports** : Mappage des ports entre l'hôte et le conteneur.
+    - **depends_on** : Spécifie les dépendances de ce service, ici le service `db`.
+    - **volumes** : Montage de volumes pour persister les données ou partager des fichiers.
+  - **db** : Définition du service de base de données.
+    - **image** : L'image Docker à utiliser pour la base de données PostgreSQL.
+    - **environment** : Variables d'environnement pour configurer la base de données.
+    - **volumes** : Montage d'un volume pour persister les données de la base de données.
+- **volumes** : Définition des volumes nommés pour persister les données.
+
+
+Docker Compose simplifie la gestion des applications complexes en permettant de définir, configurer et orchestrer facilement plusieurs conteneurs.
+
+
+<!-- ************************************************************************* -->
+
+
+L'utilisation de Docker Compose offre une gestion plus facile et plus structurée des applications multi-conteneurs par rapport à l'utilisation individuelle de conteneurs Docker. Voici les différences clés entre l'utilisation d'images Docker avec et sans Docker Compose :
+
+
+<!-- ************************************************************************* -->
+
+Docker Networks permet aux conteneurs de communiquer entre eux et avec le monde extérieur. Ils fournissent une couche d'abstraction qui simplifie la gestion des communications et des connexions dans les applications conteneurisées. Voici les principaux types de réseaux Docker et leur utilité :
